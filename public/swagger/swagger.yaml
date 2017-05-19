@@ -1,0 +1,80 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: EZgreen API
+  description: Move your app forward with the EZgreen API
+  version: "1.0.0"
+# the domain of the service
+host: ezgreentest.herokuapp.com
+# array of all schemes that your API supports
+schemes: [http, https]
+# will be prefixed to all paths
+basePath: /api
+produces:
+  - application/json
+paths:
+  /sensors:
+    get:
+      summary: Product Types
+      description: |
+        The endpoint returns information about the EZgreen products. It's possible to filter on different
+        parameters.
+      parameters:
+        - name: user_id
+          in: query
+          type: string
+          format: xxxxxxxxxxxxxxxx
+          description: Unique user identifier used to connect EZgreen devices to your account.
+        - name: temperature
+          in: query
+          type: string
+          format: xx.xx
+          description: Measured temperature in degrees Celsius.
+        - name: light
+          in: query
+          type: string
+          format: 0 or 1
+          description: Light (1) or dark (0).
+        - name: humidity
+          in: query
+          type: string
+          format: xx.xx
+          description: Measured humidity in percentage.
+        - name: moisture
+          in: query
+          type: string
+          format: number
+          description: Measured soil humidity (from 0 to 100).
+        - name: module_id
+          in: query
+          type: string
+          format: xxxxxx
+          description: Unique module identifier used to seperate multiple EZgreen modules on the same account.
+        - name: datetime
+          in: query
+          type: string
+          format: yyyy-mm-dd hh:mm:ss
+          description: Unique customer identifier to be used for experience customization.
+      responses:
+        200:
+          description: An array of products
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                temperature:
+                  type: string
+                light:
+                  type: string
+                humidity:
+                  type: string
+                moisture:
+                  type: string
+                module_id:
+                  type: string
+                datetime:
+                  type: string

@@ -1,0 +1,24 @@
+<h2 class="page-header">Reset Password</h2>
+{{#if success_msg}}
+  <div class="alert alert-success">{{success_msg}}</div>
+{{/if}}
+
+{{#if error_msg}}
+  <div class="alert alert-danger">{{error_msg}}</div>
+{{/if}}
+
+{{#if error}}
+  <div class="alert alert-danger">{{error}}</div>
+{{/if}}
+<form method="post" action="/users/login">
+  <div class="form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" name="username" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" name="password" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+  <a href="/users/forgot" class="btn btn-default">Forgot</a>
+</form>

@@ -1,0 +1,39 @@
+{
+  "name": "ezgreen",
+  "version": "1.0.0",
+  "description": "API for smart city integration.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Tomas Milio & Neel Borghs",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.4.0",
+    "basic-auth": "^1.0.4",
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "connect-flash": "*",
+    "cookie-parser": "^1.4.1",
+    "express": "*",
+    "express-handlebars": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "jsonwebtoken": "^7.1.9",
+    "mongodb": "*",
+    "mongoose": "*",
+    "morgan": "^1.7.0",
+    "node-datetime": "*",
+    "nodemailer": "^2.6.0",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*",
+    "randomstring": "^1.1.5",
+    "request": "^2.81.0",
+    "system-sleep": "*"
+  },
+  "devDependencies": {}
+}
