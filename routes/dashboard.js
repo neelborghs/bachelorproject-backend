@@ -40,6 +40,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 			profile.getUserByEmail(email, function(err, user) {
 				if(err) throw err;
 				user.user_id = successUserId;
+				user.save();
 			});
 			request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + successUserId, json: true}, function(err, res, json) {
 				if (err) {
