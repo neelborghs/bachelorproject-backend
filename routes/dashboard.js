@@ -25,7 +25,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 			}
 			//console.log(json);
 			addModule = "";
-			addModule = json;
+			addModule = json[1].string;
 			html =   "<div class='w3-card-4' style='width:100%'>Naar link geweest "+ addModule +"</div>";
 		});
 		sleep(5000);
