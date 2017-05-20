@@ -32,10 +32,6 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 
 		});
 		sleep(500);
-		if (addModule!=""){
-			sleep(5000);
-			res.redirect('');
-		}
 	}
 		//AUTOMATIC MODULE ADD --- END ---
 		else{
@@ -89,7 +85,10 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 
 
 		res.render('index', {html: html, name: name, profilePicture: profilePicture});
-
+		if (addModule!=""){
+			sleep(5000);
+			res.redirect('');
+		}
 
 });
 
