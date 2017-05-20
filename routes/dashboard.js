@@ -21,8 +21,8 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 		//AUTOMATIC MODULE ADD --- START ---
 	if (req.user.user_id == null){
 
-		request({url: 'https://api.myjson.com/bins/s7ogl', json: true}, function(err, res, json) {
-			if(err)throw err;
+		request({url: 'https://api.myjson.com/bins/s7oglDDD', json: true}, function(err, res, json) {
+			if(err) throw err;
 			//console.log(json);
 			addModule = null;
 			addModule = json;
