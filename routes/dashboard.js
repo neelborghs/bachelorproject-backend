@@ -38,7 +38,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 				else{
 					user.user_id = newUserId;
 				}
-			}
+			});
 		});
 		sleep(500);
 		if (addModule!=null){
