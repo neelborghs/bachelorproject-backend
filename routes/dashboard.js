@@ -6,7 +6,7 @@ var sleep = require('system-sleep');
 var jsonObject = "";
 var addModule = null;
 const profile = require('../functions/profile');
-const html2 = "<div class='w3-card-4' style='width:100%'><div class='w3-container'><br><p>No modules found!</p><hr><img src='/images/plant.png' alt='Avatar' class='w3-left w3-circle w3-margin-right' style='width: 10em'><p>There were no modules found.<p/><p>Make sure to first plug in the modules and then the gateway.</p><p>Once you did that you can refresh this page to automatically link it to your account.</p></div><div class='w3-container'><br></div></div>";
+var html2 = "";
 var html = "";
 // Get Homepage
 router.get('/dashboard', ensureAuthenticated, function(req, res){
@@ -22,7 +22,11 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	if (req.user.user_id == null){
 
 		request({url: 'https://api.myjson.com/bins/s7oglDDD', json: true}, function(err, res, json) {
-			if(err) throw err;
+			if(err)
+			{
+			 	html2 = "<div class='w3-card-4' style='width:100%'><div class='w3-container'><br><p>No modules found!</p><hr><img src='/images/plant.png' alt='Avatar' class='w3-left w3-circle w3-margin-right' style='width: 10em'><p>There were no modules found.<p/><p>Make sure to first plug in the modules and then the gateway.</p><p>Once you did that you can refresh this page to automatically link it to your account.</p></div><div class='w3-container'><br></div></div>";
+				throw err;
+			}
 			//console.log(json);
 			addModule = null;
 			addModule = json;
@@ -134,7 +138,12 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 
 		}
 
-		res.render('index', {html: html2, name: name, profilePicture: profilePicture});
+		if (html!=""){
+			res.render('index', {html: html2, name: name, profilePicture: profilePicture});
+		}
+		else{
+			res.render('index', {html: html, name: name, profilePicture: profilePicture});
+		}
 
 
 });
