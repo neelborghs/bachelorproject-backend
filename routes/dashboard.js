@@ -5,6 +5,7 @@ var router = express.Router();
 var sleep = require('system-sleep');
 var jsonObject = "";
 var addModule = null;
+const profile = require('../functions/profile');
 
 // Get Homepage
 router.get('/dashboard', ensureAuthenticated, function(req, res){
