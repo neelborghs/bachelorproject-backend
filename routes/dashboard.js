@@ -4,7 +4,7 @@ var request = require('request');
 var router = express.Router();
 var sleep = require('system-sleep');
 var jsonObject = "";
-var addModule = "d";
+var addModule = null;
 
 // Get Homepage
 router.get('/dashboard', ensureAuthenticated, function(req, res){
@@ -24,7 +24,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 
 			}
 			//console.log(json);
-			addModule = "";
+			addModule = null;
 			addModule = json;
 			for (i in addModule){
 				html =   "<div class='w3-card-4' style='width:100%'>Naar link geweest "+ addModule[i].string +"</div>";
@@ -32,6 +32,9 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 
 		});
 		sleep(500);
+		if (addModule!=null){
+			res.redirect('/dashboard');
+		}
 	}
 		//AUTOMATIC MODULE ADD --- END ---
 		else{
@@ -85,10 +88,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 
 
 		res.render('index', {html: html, name: name, profilePicture: profilePicture});
-		if (addModule!=""){
-			sleep(5000);
-			res.redirect('');
-		}
+
 
 });
 
