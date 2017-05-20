@@ -34,7 +34,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 				html =   "<div class='w3-card-4' style='width:100%'>Naar link geweest "+ addModule[i].string +"</div>";
 			}
 		});
-		sleep(5000);
+		sleep(500);
 		if (successUserId!=""){
 			profile.getUserByEmail(email, function(err, user) {
 				if(err) throw err;
