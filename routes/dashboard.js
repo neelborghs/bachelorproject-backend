@@ -24,7 +24,6 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 		request({url: 'https://api.myjson.com/bins/s7ogl', json: true}, function(err, res, json) {
 			if(err)
 			{
-
 				throw err;
 			}
 			//console.log(json);
