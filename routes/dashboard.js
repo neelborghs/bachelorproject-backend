@@ -41,6 +41,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 				jsonObject = "";
 				jsonObject = json;
 				console.log(jsonObject);
+				html += "<div class='w3-card-4' style='width:100%'>Naar link geweest "+ jsonObject +"</div>";
 			});
 			//Set dynamic data here
 			sleep(500); // sleep for 0.5 second, this helps refreshing the data
