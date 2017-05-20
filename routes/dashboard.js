@@ -26,9 +26,10 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	var numberObjects = Object.keys(jsonObject).length;
 	//html += "<h1>number objects: " + numberObjects + "</h1>"; //For testing numberObjects
 	//if (numberObjects == 0){
+		//AUTOMATIC MODULE ADD --- START ---
 	if (req.user.user_id == null){
 						html =   "<div class='w3-card-4' style='width:100%'><div class='w3-container'><br><p>No modules registered!</p><hr><img src='/images/plant.png' alt='Avatar' class='w3-left w3-circle w3-margin-right' style='width: 10em'><p>You don't have any modules registered on this account.<p/><p>Go to the Android application to add some plant modules to this account or login with another account.</p><p>If you have any trouble connecting your module, you can always read the instructions</p></div><div class='w3-container'><br></div></div>";
-		request({url: 'http://www.jsoneditoronline.org/?id=1c6f0c7606ed933a8482c395c52e74a1', json: true}, function(err, res, json) {
+		request({url: 'http://192.168.0.10', json: true}, function(err, res, json) {
 			if (err) {
 				throw err;
 			}
@@ -39,6 +40,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 		});
 
 	}
+		//AUTOMATIC MODULE ADD --- END ---
 	for (i in jsonObject){
 		if (jsonObject[i].moisture < 50)
 		{
