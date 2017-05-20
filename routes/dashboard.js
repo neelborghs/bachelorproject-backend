@@ -33,7 +33,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 		});
 		sleep(500);
 		if (addModule!=null){
-			res.redirect(req.get('referer'));
+			res.redirect(req.get('dashboard'));
 		}
 	}
 		//AUTOMATIC MODULE ADD --- END ---
