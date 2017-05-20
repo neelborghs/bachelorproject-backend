@@ -25,10 +25,10 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 			}
 			//console.log(json);
 			addModule = "";
-			addModule = json.string;
+			addModule = json;
 			html =   "<div class='w3-card-4' style='width:100%'>Naar link geweest "+ addModule +"</div>";
 		});
-		sleep(5000);
+		sleep(500);
 	}
 		//AUTOMATIC MODULE ADD --- END ---
 		else{
