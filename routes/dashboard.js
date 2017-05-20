@@ -41,7 +41,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 				if(err) throw err;
 				user.user_id = successUserId;
 			});
-			request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + id, json: true}, function(err, res, json) {
+			request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + successUserId, json: true}, function(err, res, json) {
 				if (err) {
 					throw err;
 				}
@@ -137,7 +137,6 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 
 		}
 
-		sleep(500);
 		res.render('index', {html: html, name: name, profilePicture: profilePicture});
 
 
