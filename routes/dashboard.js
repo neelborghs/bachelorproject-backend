@@ -31,6 +31,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 			}
 
 		});
+		sleep(500);
 	}
 		//AUTOMATIC MODULE ADD --- END ---
 		else{
