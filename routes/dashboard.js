@@ -10,6 +10,7 @@ var addModule = null;
 router.get('/dashboard', ensureAuthenticated, function(req, res){
 	var name = req.user.first_name;
 	var id = req.user.user_id;
+	var email = req.user.email;
 	var profilePicture = ""
 	var html = "";
 	var successUserId = "";
@@ -28,12 +29,17 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 			addModule = null;
 			addModule = json;
 			for (i in addModule){
+				successUserId = addModule[i].string;
 				html =   "<div class='w3-card-4' style='width:100%'>Naar link geweest "+ addModule[i].string +"</div>";
 			}
 
 		});
 		sleep(500);
-		if (addModule!=null){
+		if (successUserId!=""){
+			profile.getUserByEmail(email, function(err, user) {
+				if(err) throw err;
+				user.user_id = successUserId;
+			});
 			request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + id, json: true}, function(err, res, json) {
 				if (err) {
 					throw err;
