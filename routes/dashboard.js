@@ -12,17 +12,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	var id = req.user.user_id;
 	var profilePicture = ""
 	var html = "";
-	request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + req.user.user_id, json: true}, function(err, res, json) {
-		if (err) {
-			throw err;
-		}
-		//console.log(json);
-		jsonObject = "";
-		jsonObject = json;
-		console.log(jsonObject);
-	});
-	//Set dynamic data here
-	sleep(500); // sleep for 0.5 second, this helps refreshing the data
+
 	var numberObjects = Object.keys(jsonObject).length;
 	//html += "<h1>number objects: " + numberObjects + "</h1>"; //For testing numberObjects
 	//if (numberObjects == 0){
@@ -42,6 +32,19 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	}
 		//AUTOMATIC MODULE ADD --- END ---
 		else{
+
+			request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + req.user.user_id, json: true}, function(err, res, json) {
+				if (err) {
+					throw err;
+				}
+				//console.log(json);
+				jsonObject = "";
+				jsonObject = json;
+				console.log(jsonObject);
+			});
+			//Set dynamic data here
+			sleep(500); // sleep for 0.5 second, this helps refreshing the data
+
 			for (i in jsonObject){
 				if (jsonObject[i].moisture < 50)
 				{
