@@ -22,9 +22,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	if (req.user.user_id == null){
 
 		request({url: 'https://api.myjson.com/bins/s7ogl', json: true}, function(err, res, json) {
-			if(err){
-				throw err;
-			}
+			if(err)throw err;
 			//console.log(json);
 			addModule = null;
 			addModule = json;
