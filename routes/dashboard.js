@@ -27,6 +27,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 			}
 			if (res.statusCode == 200){
 				html =   "<div class='w3-card-4' style='width:100%'><div class='w3-container'><br><p>No modules found!</p><hr><img src='/images/plant.png' alt='Avatar' class='w3-left w3-circle w3-margin-right' style='width: 10em'><p>There were no modules found.<p/><p>Make sure to first plug in the modules and then the gateway.</p><p>Once you did that you can refresh this page to automatically link it to your account.</p></div><div class='w3-container'><br></div></div>";
+				res.render('index', {html: html, name: name, profilePicture: profilePicture});
 			}
 			//console.log(json);
 			addModule = null;
