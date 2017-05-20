@@ -34,7 +34,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 		sleep(500);
 		if (addModule!=""){
 			sleep(5000);
-			res.redirect('/dashboard');
+			res.redirect('');
 		}
 	}
 		//AUTOMATIC MODULE ADD --- END ---
