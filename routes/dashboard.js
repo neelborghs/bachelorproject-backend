@@ -25,7 +25,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	sleep(500); // sleep for 0.5 second, this helps refreshing the data
 	//var numberObjects = Object.keys(jsonObject).length;
 	//html += "<h1>number objects: " + numberObjects + "</h1>"; //For testing numberObjects
-	//if (numberObjects == 0){
+	if (numberObjects == 0){
 	if (req.user.user_id == null){
 		request({url: 'http://www.jsoneditoronline.org/?id=1c6f0c7606ed933a8482c395c52e74a1', json: true}, function(err, res, json) {
 			if (err) {
