@@ -14,7 +14,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	var email = req.user.email;
 	var profilePicture = ""
 	var html = "";
-	var successUserId = "";
+	var successUserId = "123456789";
 
 	var numberObjects = Object.keys(jsonObject).length;
 	//html += "<h1>number objects: " + numberObjects + "</h1>"; //For testing numberObjects
