@@ -9,6 +9,7 @@ var addModule = null;
 // Get Homepage
 router.get('/dashboard', ensureAuthenticated, function(req, res){
 	var name = req.user.first_name;
+	var email = req.user.email;
 	var id = req.user.user_id;
 	var profilePicture = ""
 	var html = "";
@@ -31,16 +32,15 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 				newUserId = addModule[i].string;
 				html =   "<div class='w3-card-4' style='width:100%'>Naar link geweest "+ addModule[i].string +"</div>";
 			}
-			profile.getUserByEmail(req.user.email, function(err, user){
+			profile.getUserByEmail(email, function(err, user){
 				if (err) {
 					throw err;
 				}
-				else{
 					user.user_id = newUserId;
-				}
 			});
 		});
 		sleep(500);
+	}
 		if (addModule!=null){
 			request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + id, json: true}, function(err, res, json) {
 				if (err) {
