@@ -10,7 +10,7 @@ var jsonObject = "";
 router.get('/dashboard', ensureAuthenticated, function(req, res){
 	var name = req.user.first_name;
 	var id = req.user.user_id;
-	var profilePicture = req.user.profile_picture_url
+	var profilePicture = ""
 	var html = "";
 	request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + req.user.user_id, json: true}, function(err, res, json) {
 		if (err) {
@@ -56,6 +56,9 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 		if (i==numberObjects -1){
 			html+= "<br><br>"
 		}
+	}
+	if (req.user.profile_picture_url!=null){
+		profilePic += "<li role='presentation'><img src='" + req.user.profile_picture_url + "' class='w3-left w3-round-xxlarge w3-margin-right' style='height:3em'></li>"
 	}
 
 		res.render('index', {html: html, name: name, profilePic: profilePicture});
