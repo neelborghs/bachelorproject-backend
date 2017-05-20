@@ -10,6 +10,7 @@ var jsonObject = "";
 router.get('/dashboard', ensureAuthenticated, function(req, res){
 	var name = req.user.first_name;
 	var id = req.user.user_id;
+	var profilePicture = req.user.profile_picture_url
 	var html = "";
 	request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + req.user.user_id, json: true}, function(err, res, json) {
 		if (err) {
@@ -57,7 +58,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 		}
 	}
 
-		res.render('index', {html: html, name: name});
+		res.render('index', {html: html, name: name, profilePic: profilePicture});
 
 
 });
