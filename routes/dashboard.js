@@ -32,7 +32,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 
 		});
 		sleep(500);
-		if (addModule==""){
+		if (addModule!=""){
 			res.redirect('/dashboard');
 		}
 	}
