@@ -31,7 +31,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 		sleep(5000);
 	}
 		//AUTOMATIC MODULE ADD --- END ---
-		else{
+		if (req.user.user_id != null){
 
 			request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + req.user.user_id, json: true}, function(err, res, json) {
 				if (err) {
