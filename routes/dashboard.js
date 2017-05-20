@@ -35,7 +35,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 			}
 			//console.log(json);
 			addModule = "";
-			addModule = json.cpuserial;
+			addModule = json.string;
 			html =   "<div class='w3-card-4' style='width:100%'><div class='w3-container'><br><p>No modules registered!</p><hr><img src='/images/plant.png' alt='Avatar' class='w3-left w3-circle w3-margin-right' style='width: 10em'><p>" + addModule + "<p/><p>Go to the Android application to add some plant modules to this account or login with another account.</p><p>If you have any trouble connecting your module, you can always read the instructions</p></div><div class='w3-container'><br></div></div>";
 		});
 
