@@ -4,7 +4,7 @@ var request = require('request');
 var router = express.Router();
 var sleep = require('system-sleep');
 var jsonObject = "";
-var addModule = "";
+var addModule = "d";
 
 // Get Homepage
 router.get('/dashboard', ensureAuthenticated, function(req, res){
