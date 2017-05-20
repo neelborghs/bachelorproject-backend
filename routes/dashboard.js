@@ -137,7 +137,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 
 		}
 
-
+		sleep(500);
 		res.render('index', {html: html, name: name, profilePicture: profilePicture});
 
 
