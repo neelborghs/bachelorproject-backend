@@ -25,6 +25,10 @@
 
 
             {{#if user}}
+            {{#if profilePic==null}}
+            <li role="presentation"><a href="/dashboard">Dashboard</a></li>
+            <li role="presentation"><a href="/users/logout">Logout</a></li>
+            {{else}}
             <li role="presentation"><img src='{{profilePic}}' class='w3-left w3-round-xxlarge w3-margin-right' style="height:3em"></li>
             <li role="presentation"><a href="/dashboard">Dashboard</a></li>
             <li role="presentation"><a href="/users/logout">Logout</a></li>
