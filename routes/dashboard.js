@@ -28,7 +28,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 			addModule = json;
 			html =   "<div class='w3-card-4' style='width:100%'>" + addModule + "</div>";
 		});
-
+		sleep(5000);
 	}
 		//AUTOMATIC MODULE ADD --- END ---
 		else{
