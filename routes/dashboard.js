@@ -87,7 +87,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 
 		res.render('index', {html: html, name: name, profilePicture: profilePicture});
 		if (addModule!=null){
-			res.redirect(req.get('referer'));
+			res.redirect(req.get('index'));
 		}
 
 });
