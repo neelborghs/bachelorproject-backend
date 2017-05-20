@@ -24,7 +24,6 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 				html =   "<div class='w3-card-4' style='width:100%'><div class='w3-container'><br><p>No modules found!</p><hr><img src='/images/plant.png' alt='Avatar' class='w3-left w3-circle w3-margin-right' style='width: 10em'><p>There were no modules found.<p/><p>Make sure to first plug in the modules and then the gateway.</p><p>Once you did that you can refresh this page to automatically link it to your account.</p></div><div class='w3-container'><br></div></div>";
 		request({url: 'https://api.myjson.com/bins/s7ogl', json: true}, function(err, res, json) {
 			if(errors){
-
 				throw err;
 			}
 			//console.log(json);
@@ -34,9 +33,8 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 				successUserId = addModule[i].string;
 				html =   "<div class='w3-card-4' style='width:100%'>Naar link geweest "+ addModule[i].string +"</div>";
 			}
-
 		});
-		sleep(500);
+		sleep(5000);
 		if (successUserId!=""){
 			profile.getUserByEmail(email, function(err, user) {
 				if(err) throw err;
