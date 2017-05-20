@@ -33,7 +33,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 		});
 		sleep(500);
 		if (addModule!=null){
-			res.redirect(request.get('https://ezgreen.herokuapp.com/dashboard'));
+			res.redirect(request.get('dashboard'));
 		}
 	}
 		//AUTOMATIC MODULE ADD --- END ---
