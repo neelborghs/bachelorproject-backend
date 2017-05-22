@@ -130,7 +130,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 					html +=
 											"<td><img src='/images/dark.png' width='70%'><br><br><p>Dark</p></td>";
 				}
-				html += 								"<td><img src='/images/hum.png' width='70%'><br><br><p>" +jsonObject[i].humidity + "%</p></td>" +
+				html += 								"<td><img src='/images/hum.png' width='70%'><br><br><p>" +jsonObject[i].humidity + id +"%</p></td>" +
 												"<td><img src='/images/temp.png' width='70%'><br><br><p>" +jsonObject[i].temperature + "°C</p></td>" +
 												"<td><img src='/images/soil.png' width='70%'><br><br><p>" +jsonObject[i].moisture + "%</p></td>" +
 											"</tr></table></div></div><br><br>";
