@@ -20,7 +20,6 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	//if (numberObjects == 0){
 		//AUTOMATIC MODULE ADD --- START ---
 	if (req.user.user_id == null){
-
 		request({url: 'https://api.myjqsdfqsdfson.com/bins/yzwz5', json: true}, function(err, res, json) {
 			if(err)
 			{
@@ -89,6 +88,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	}
 		//AUTOMATIC MODULE ADD --- END ---
 		else{
+			successUserId = "";
 
 			request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + id, json: true}, function(err, res, json) {
 				if (err) {
