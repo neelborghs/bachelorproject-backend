@@ -20,7 +20,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	//if (numberObjects == 0){
 		//AUTOMATIC MODULE ADD --- START ---
 	if (req.user.user_id == null){
-		request({url: 'https://api.myjson.com/bins/bynkx'}, function(err, res, json) {
+		request({url: 'https://api.myjson.com/bins/bynkxdd'}, function(err, res, json) {
 			if(err)
 			{
 				throw err;
