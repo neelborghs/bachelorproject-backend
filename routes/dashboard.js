@@ -132,7 +132,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 				}
 			}
 			if (req.user.profile_picture_url!=null){
-				profilePicture += "<li role='presentation'><img src='" + req.user.profile_picture_url + "' class='w3-left w3-round-xxlarge w3-margin-right' style='height:3em'></li>"
+				profilePicture += "<li role='presentation'><img src='" + req.user.profile_picture_url + "' class='w3-left w3-circle w3-margin-right' style='height:3em'></li>"
 			}
 
 		}
