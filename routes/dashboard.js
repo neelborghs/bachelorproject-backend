@@ -28,7 +28,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 		if(Constid!=null){
 			successUserId = "";
 
-			request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + Constid , json: true}, function(err, res, json) {
+			request({url: 'https://testezgreen.herokuapp.com/api/modules/user/' + Constid , json: true}, function(err, res, json) {
 				if (err) {
 					throw err;
 				}
@@ -97,7 +97,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 					user.user_id = successUserId;
 					user.save();
 				});
-				request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + successUserId, json: true}, function(err, res, json) {
+				request({url: 'https://testezgreen.herokuapp.com/api/modules/user/' + successUserId, json: true}, function(err, res, json) {
 					if (err) {
 						throw err;
 					}
