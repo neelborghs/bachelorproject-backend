@@ -20,7 +20,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	//if (numberObjects == 0){
 		//AUTOMATIC MODULE ADD --- START ---
 	if (req.user.user_id == null){
-		request({url: 'https://api.myjson.com/bins/yzwz5'}, function(err, res, json) {
+		request({url: 'https://api.myjson.com/bins/bynkx'}, function(err, res, json) {
 			if(err)
 			{
 				throw err;
@@ -29,7 +29,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 			addModule = "";
 			addModule = json;
 			for (i in addModule){
-				successUserId = addModule[i].string;
+				successUserId = addModule[i].cpuserial;
 				html =   "<div class='w3-card-4' style='width:100%'>Naar link geweest "+ addModule[i].cpuserial +"</div>";
 			}
 		});
