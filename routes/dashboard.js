@@ -34,7 +34,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 			}
 		});
 		sleep(500);
-		if (successUserId!=""){
+		if (successUserId!=null){
 			profile.getUserByEmail(email, function(err, user) {
 				if(err) throw err;
 				user.user_id = successUserId;
@@ -84,13 +84,6 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 			if (req.user.profile_picture_url!=null){
 				profilePicture += "<li role='presentation'><img src='" + req.user.profile_picture_url + "' class='w3-left w3-round-xxlarge w3-margin-right' style='height:3em'></li>"
 			}
-		}
-		else{
-			profile.getUserByEmail(email, function(err, user) {
-				if(err) throw err;
-				user.user_id = null;
-				user.save();
-			});
 		}
 	}
 		//AUTOMATIC MODULE ADD --- END ---
