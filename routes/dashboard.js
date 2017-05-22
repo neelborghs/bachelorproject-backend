@@ -149,10 +149,10 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 
 
 				if(html == ""){
-					res.render('index', {html: html + Constid, name: name, profilePicture: profilePicture});
+					res.render('index', {html: html2 + Constid, name: name, profilePicture: profilePicture});
 				}
 				if(html!=""){
-					res.render('index', {html: html2 + Constid, name: name, profilePicture: profilePicture});
+					res.render('index', {html: html + Constid, name: name, profilePicture: profilePicture});
 				}
 
 
