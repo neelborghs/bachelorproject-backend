@@ -48,6 +48,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 				if (err) {
 					throw err;
 				}
+				
 				//console.log(json);
 				jsonObject = "";
 				jsonObject = json;
