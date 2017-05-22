@@ -147,10 +147,10 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 
 
 				if(html == ""){
-					res.render('index', {html: html, name: name, profilePicture: profilePicture});
+					res.render('index', {html: html2, name: name, profilePicture: profilePicture});
 				}
 				else{
-					res.render('index', {html: html2, name: name, profilePicture: profilePicture});
+					res.render('index', {html: html, name: name, profilePicture: profilePicture});
 				}
 
 
