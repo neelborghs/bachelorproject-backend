@@ -13,7 +13,7 @@ var email = "";
 
 // Get Homepage
 router.get('/dashboard', ensureAuthenticated, function(req, res){
-	const id = req.user.user_id;
+	const Constid = req.user.user_id;
 	name = req.user.first_name + id;
 	email = req.user.email;
 	var profilePicture = ""
@@ -22,14 +22,13 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	//html += "<h1>number objects: " + numberObjects + "</h1>"; //For testing numberObjects
 	//if (numberObjects == 0){
 		//AUTOMATIC MODULE ADD --- START ---
-		sleep(500);
 
 		//AUTOMATIC MODULE ADD --- END ---
-		sleep(500);
-		if(id!==null){
+
+		if(Constid!==null){
 			successUserId = "";
 
-			request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + id , json: true}, function(err, res, json) {
+			request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + Constid , json: true}, function(err, res, json) {
 				if (err) {
 					throw err;
 				}
@@ -76,7 +75,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 
 		}
 
-		if (id==null){
+		if (Constid==null){
 			request({url: 'https://api.myjqsdfqsdfson.com/bins/yzwz5', json: true}, function(err, res, json) {
 				if(err)
 				{
