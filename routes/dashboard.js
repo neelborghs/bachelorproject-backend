@@ -14,7 +14,7 @@ var email = "";
 // Get Homepage
 router.get('/dashboard', ensureAuthenticated, function(req, res){
 	const Constid = req.user.user_id;
-	name = req.user.first_name + id;
+	name = req.user.first_name + Constid;
 	email = req.user.email;
 	var profilePicture = ""
 	var successUserId = "";
