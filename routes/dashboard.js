@@ -18,6 +18,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	//html += "<h1>number objects: " + numberObjects + "</h1>"; //For testing numberObjects
 	//if (numberObjects == 0){
 		//AUTOMATIC MODULE ADD --- START ---
+		sleep(500);
 	if (req.user.user_id==null){
 		request({url: 'https://api.myjqsdfqsdfson.com/bins/yzwz5', json: true}, function(err, res, json) {
 			if(err)
