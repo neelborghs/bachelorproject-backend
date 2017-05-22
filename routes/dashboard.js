@@ -95,7 +95,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	}
 		//AUTOMATIC MODULE ADD --- END ---
 		sleep(500);
-		if(id!=null){
+		if(id!==null){
 			successUserId = "";
 
 			request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + id , json: true}, function(err, res, json) {
@@ -144,6 +144,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 			}
 
 		}
+		sleep(1000);
 				res.render('index', {html: html, name: name, profilePicture: profilePicture});
 
 });
