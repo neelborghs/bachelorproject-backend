@@ -10,7 +10,7 @@ const html2 = "<div class='w3-card-4' style='width:100%'><div class='w3-containe
 var html = "";
 var name = "";
 var email = "";
-var id = "";
+var id = null;
 // Get Homepage
 router.get('/dashboard', ensureAuthenticated, function(req, res){
 	name = req.user.first_name + req.user.user_id;
