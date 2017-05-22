@@ -29,10 +29,12 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 			//console.log(json);
 			addModule = "";
 			addModule = "[" + json + "]";
+			check="";
+			check=json;
 			for (i in addModule){
 				successUserId = addModule[i].string;
 				html =   "<div class='w3-card-4' style='width:100%'>Naar link geweest "+ addModule[i].cpuserial +"</div>";
-				check = 1;
+
 			}
 		});
 		sleep(500);
