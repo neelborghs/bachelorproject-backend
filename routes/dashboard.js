@@ -85,6 +85,13 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 				profilePicture += "<li role='presentation'><img src='" + req.user.profile_picture_url + "' class='w3-left w3-round-xxlarge w3-margin-right' style='height:3em'></li>"
 			}
 		}
+		else{
+			profile.getUserByEmail(email, function(err, user) {
+				if(err) throw err;
+				user.user_id = null;
+				user.save();
+			});
+		}
 	}
 		//AUTOMATIC MODULE ADD --- END ---
 		else{
