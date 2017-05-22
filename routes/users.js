@@ -123,7 +123,7 @@ passport.deserializeUser(function(email, done) {
 router.post('/login',
   passport.authenticate('local', {failureRedirect: '/users/login', failureFlash: true}), //Deleted successRedirect for dynamic data, keeps working the same
   function(req, res) {
-		//Set dynamic data here
+
 		res.redirect('/dashboard');
   });
 
