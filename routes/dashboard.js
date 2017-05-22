@@ -10,9 +10,11 @@ const html2 = "<div class='w3-card-4' style='width:100%'><div class='w3-containe
 var html = "";
 var name = "";
 var email = "";
+var id = "";
 // Get Homepage
 router.get('/dashboard', ensureAuthenticated, function(req, res){
-	name = req.user.first_name + req.user.user_id;
+	name = req.user.first_name ;
+	id = req.user.user_id;
 	email = req.user.email;
 	var profilePicture = ""
 	var successUserId = "";
@@ -89,7 +91,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 		}
 	}
 		//AUTOMATIC MODULE ADD --- END ---
-		else if (req.user.user_id!=null){
+		else if (id!=null){
 			successUserId = "";
 
 			request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + req.user.user_id , json: true}, function(err, res, json) {
