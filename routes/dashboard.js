@@ -13,8 +13,9 @@ var email = "";
 var id = null;
 // Get Homepage
 router.get('/dashboard', ensureAuthenticated, function(req, res){
-	name = req.user.first_name + req.user.user_id;
+
 	id = req.user.user_id;
+	name = req.user.first_name + id;
 	email = req.user.email;
 	var profilePicture = ""
 	var successUserId = "";
