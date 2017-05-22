@@ -21,17 +21,17 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 		//AUTOMATIC MODULE ADD --- START ---
 	if (req.user.user_id == null){
 
-		request({url: 'https://api.myjson.com/bins/s7oglD', json: true}, function(err, res, json) {
+		request({url: 'https://api.myjson.com/bins/yzwz5', json: true}, function(err, res, json) {
 			if(err)
 			{
 				throw err;
 			}
 			//console.log(json);
 			addModule = null;
-			addModule = json;
+			addModule = "[" + json + "]";
 			for (i in addModule){
 				successUserId = addModule[i].string;
-				html =   "<div class='w3-card-4' style='width:100%'>Naar link geweest "+ addModule[i].string +"</div>";
+				html =   "<div class='w3-card-4' style='width:100%'>Naar link geweest "+ addModule[i].cpuserial +"</div>";
 			}
 		});
 		sleep(500);
