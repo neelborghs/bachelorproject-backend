@@ -15,6 +15,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	var email = req.user.email;
 	var profilePicture = ""
 	var successUserId = "";
+	var check = "";
 	var numberObjects = Object.keys(jsonObject).length;
 	//html += "<h1>number objects: " + numberObjects + "</h1>"; //For testing numberObjects
 	//if (numberObjects == 0){
@@ -31,10 +32,11 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 			for (i in addModule){
 				successUserId = addModule[i].string;
 				html =   "<div class='w3-card-4' style='width:100%'>Naar link geweest "+ addModule[i].cpuserial +"</div>";
+				check = 1;
 			}
 		});
 		sleep(500);
-		if (successUserId!=""){
+		if (check!=""){
 			profile.getUserByEmail(email, function(err, user) {
 				if(err) throw err;
 				user.user_id = successUserId;
