@@ -72,7 +72,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 			}
 
 			if (req.user.profile_picture_url!=null){
-				profilePicture += "<li role='presentation'><img src='" + req.user.profile_picture_url + "' class='w3-left w3-round-xlarge w3-margin-right' style='height:3em'></li>"
+				profilePicture += "<li role='presentation'><img src='" + req.user.profile_picture_url + "' class='w3-left w3-round-xlarge w3-margin-right' style='height:3em'></li>";
 			}
 
 		}
@@ -111,7 +111,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 				});
 				//Set dynamic data here
 				 // sleep for 0.5 second, this helps refreshing the data
-				html = ""
+				html = "";
 				for (i in jsonObject){
 					if (jsonObject[i].moisture < 50)
 					{
@@ -138,18 +138,18 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 													"<td><img src='/images/soil.png' width='70%'><br><br><p>" +jsonObject[i].moisture + "%</p></td>" +
 												"</tr></table></div></div><br><br>";
 					if (i==numberObjects -1){
-						html+= "<br><br>"
+						html+= "<br><br>";
 					}
 				}
 				if (req.user.profile_picture_url!=null){
-					profilePicture += "<li role='presentation'><img src='" + req.user.profile_picture_url + "' class='w3-left w3-round-xxlarge w3-margin-right' style='height:3em'></li>"
+					profilePicture += "<li role='presentation'><img src='" + req.user.profile_picture_url + "' class='w3-left w3-round-xxlarge w3-margin-right' style='height:3em'></li>";
 				}
 			}
 		}
 
 
 				if(html == ""){
-					res.render('index', {html: html2 + Constid, name: name, profilePicture: profilePicture});
+					res.render('index', {html: html + Constid, name: name, profilePicture: profilePicture});
 				}
 				if(html!=""){
 					res.render('index', {html: html + Constid, name: name, profilePicture: profilePicture});
