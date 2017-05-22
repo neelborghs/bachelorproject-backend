@@ -95,7 +95,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 		else{
 			successUserId = "";
 
-			request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + req.user.user_id , json: true}, function(err, res, json) {
+			request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + id , json: true}, function(err, res, json) {
 				if (err) {
 					throw err;
 				}
