@@ -34,7 +34,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 			}
 		});
 		sleep(500);
-		if (successUserId!=null){
+		if (successUserId!="undefined"){
 			profile.getUserByEmail(email, function(err, user) {
 				if(err) throw err;
 				user.user_id = successUserId;
