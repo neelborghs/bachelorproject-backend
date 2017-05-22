@@ -25,7 +25,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 
 		//AUTOMATIC MODULE ADD --- END ---
 
-		if(Constid!=""){
+		if(Constid==""){
 			successUserId = "";
 
 			request({url: 'https://testezgreen.herokuapp.com/api/modules/user/' + Constid , json: true}, function(err, res, json) {
@@ -75,7 +75,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 
 		}
 
-		if (Constid==""){
+		if (Constid!=""){
 			request({url: 'https://api.myjqsdfqsdfson.com/bins/yzwz5', json: true}, function(err, res, json) {
 				if(err)
 				{
