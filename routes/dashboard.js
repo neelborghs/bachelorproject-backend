@@ -22,6 +22,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	//html += "<h1>number objects: " + numberObjects + "</h1>"; //For testing numberObjects
 	//if (numberObjects == 0){
 		//AUTOMATIC MODULE ADD --- START ---
+		sleep(500);
 	if (req.user.user_id==null){
 		request({url: 'https://api.myjqsdfqsdfson.com/bins/yzwz5', json: true}, function(err, res, json) {
 			if(err)
@@ -92,6 +93,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 		}
 	}
 		//AUTOMATIC MODULE ADD --- END ---
+		sleep(500);
 		else{
 			successUserId = "";
 
@@ -128,7 +130,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 					html +=
 											"<td><img src='/images/dark.png' width='70%'><br><br><p>Dark</p></td>";
 				}
-				html += 								"<td><img src='/images/hum.png' width='70%'><br><br><p>" +jsonObject[i].humidity +id+ "%</p></td>" +
+				html += 								"<td><img src='/images/hum.png' width='70%'><br><br><p>" +jsonObject[i].humidity + "%</p></td>" +
 												"<td><img src='/images/temp.png' width='70%'><br><br><p>" +jsonObject[i].temperature + "°C</p></td>" +
 												"<td><img src='/images/soil.png' width='70%'><br><br><p>" +jsonObject[i].moisture + "%</p></td>" +
 											"</tr></table></div></div><br><br>";
