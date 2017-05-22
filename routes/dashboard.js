@@ -10,11 +10,10 @@ const html2 = "<div class='w3-card-4' style='width:100%'><div class='w3-containe
 var html = "";
 var name = "";
 var email = "";
-var id = null;
+
 // Get Homepage
 router.get('/dashboard', ensureAuthenticated, function(req, res){
-
-	id = req.user.user_id;
+	const id = req.user.user_id;
 	name = req.user.first_name + id;
 	email = req.user.email;
 	var profilePicture = ""
