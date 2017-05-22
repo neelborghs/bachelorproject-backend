@@ -4,60 +4,154 @@ var request = require('request');
 var router = express.Router();
 var sleep = require('system-sleep');
 var jsonObject = "";
-
+var addModule = null;
+const profile = require('../functions/profile');
+const html2 = "<div class='w3-card-4' style='width:100%'><div class='w3-container'><br><p>No modules found!</p><hr><img src='/images/plant.png' alt='Avatar' class='w3-left w3-circle w3-margin-right' style='width: 10em'><p>There were no modules found.<p/><p>Make sure to first plug in the modules and then the gateway.</p><p>Once you did that you can refresh this page to automatically link it to your account.</p></div><div class='w3-container'><br></div></div>";
+var html = "";
+var name = "";
+var email = "";
 
 // Get Homepage
 router.get('/dashboard', ensureAuthenticated, function(req, res){
-	var name = req.user.first_name;
-	var id = req.user.user_id;
-	var html = "";
-	request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + req.user.user_id, json: true}, function(err, res, json) {
-		if (err) {
-			throw err;
-		}
-		//console.log(json);
-		jsonObject = "";
-		jsonObject = json;
-		console.log(jsonObject);
-	});
-	//Set dynamic data here
-	sleep(500); // sleep for 0.5 second, this helps refreshing the data
+	const Constid = req.user.user_id;
+	name = req.user.first_name + Constid;
+	email = req.user.email;
+	var profilePicture = ""
+	var successUserId = "";
 	var numberObjects = Object.keys(jsonObject).length;
 	//html += "<h1>number objects: " + numberObjects + "</h1>"; //For testing numberObjects
-	if (numberObjects == 0){
-		html =   "<div class='w3-card-4' style='width:100%'><div class='w3-container'><br><p>No modules registered!</p><hr><img src='/images/plant.png' alt='Avatar' class='w3-left w3-circle w3-margin-right' style='width: 10em'><p>You don't have any modules registered on this account.<p/><p>Go to the Android application to add some plant modules to this account or login with another account.</p><p>If you have any trouble connecting your module, you can always read the instructions</p></div><div class='w3-container'><br></div></div>";
-	}
-	for (i in jsonObject){
-		if (jsonObject[i].moisture < 50)
-		{
-			html += "<div class='w3-card-4red' style='width:100%'>";
-		}
-		if (jsonObject[i].moisture >= 50 && jsonObject[i].moisture < 55){
-						html += "<div class='w3-card-4orange' style='width:100%'>";
-		}
-		if (jsonObject[i].moisture >= 55){
-						html += "<div class='w3-card-4green' style='width:100%'>";
-		}
-		html += "<div class='w3-container'><br><p>Module ID: " + jsonObject[i].module_id + "</p><hr><table><tr>";
-		if (jsonObject[i].light==1)
-		{
-			html +=
-									"<td><img src='/images/light.png' width='70%'><br><br><p>Light</p></td>";
-		}
-		else{
-			html +=
-									"<td><img src='/images/dark.png' width='70%'><br><br><p>Dark</p></td>";
-		}
-		html += 								"<td><img src='/images/hum.png' width='70%'><br><br><p>" +jsonObject[i].humidity + "%</p></td>" +
-										"<td><img src='/images/temp.png' width='70%'><br><br><p>" +jsonObject[i].temperature + "°C</p></td>" +
-										"<td><img src='/images/soil.png' width='70%'><br><br><p>" +jsonObject[i].moisture + "%</p></td>" +
-									"</tr></table></div></div><br><br>";
-		if (i==numberObjects -1){
-			html+= "<br><br>"
-		}
-	}
+	//if (numberObjects == 0){
+		//AUTOMATIC MODULE ADD --- START ---
 
-		res.render('index', {html: html, name: name});
+		//AUTOMATIC MODULE ADD --- END ---
+
+		if(Constid!=null){
+			successUserId = "";
+
+			request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + Constid , json: true}, function(err, res, json) {
+				if (err) {
+					throw err;
+				}
+				//console.log(json);
+				jsonObject = "";
+				jsonObject = json;
+				console.log(jsonObject);
+			});
+			//Set dynamic data here
+			sleep(500); // sleep for 0.5 second, this helps refreshing the data
+			html = "";
+			for (i in jsonObject){
+				if (jsonObject[i].moisture < 50)
+				{
+					html += "<div class='w3-card-4red' style='width:100%'>";
+				}
+				if (jsonObject[i].moisture >= 50 && jsonObject[i].moisture < 55){
+								html += "<div class='w3-card-4orange' style='width:100%'>";
+				}
+				if (jsonObject[i].moisture >= 55){
+								html += "<div class='w3-card-4green' style='width:100%'>";
+				}
+				html += "<div class='w3-container'><br><p>Module ID: " + jsonObject[i].module_id + "</p><hr><table><tr>";
+				if (jsonObject[i].light==1)
+				{
+					html +=
+											"<td><img src='/images/light.png' width='70%'><br><br><p>Light</p></td>";
+				}
+				else{
+					html +=
+											"<td><img src='/images/dark.png' width='70%'><br><br><p>Dark</p></td>";
+				}
+				html += 								"<td><img src='/images/hum.png' width='70%'><br><br><p>" +jsonObject[i].humidity + Constid +"%</p></td>" +
+												"<td><img src='/images/temp.png' width='70%'><br><br><p>" +jsonObject[i].temperature + "°C</p></td>" +
+												"<td><img src='/images/soil.png' width='70%'><br><br><p>" +jsonObject[i].moisture + "%</p></td>" +
+											"</tr></table></div></div><br><br>";
+				if (i==numberObjects -1){
+					html+= "<br><br>"
+				}
+			}
+			if (req.user.profile_picture_url!=null){
+				profilePicture += "<li role='presentation'><img src='" + req.user.profile_picture_url + "' class='w3-left w3-round-xlarge w3-margin-right' style='height:3em'></li>"
+			}
+
+		}
+		sleep(1000);
+		if (Constid==null){
+			request({url: 'https://api.myjqsdfqsdfson.com/bins/yzwz5', json: true}, function(err, res, json) {
+				if(err)
+				{
+					throw err;
+				}
+				//console.log(json);
+				addModule = null;
+				addModule = json;
+				successUserId = "";
+				for (i in addModule){
+					successUserId = addModule[i];
+					html =   "<div class='w3-card-4' style='width:100%'>Naar link geweest "+ addModule[i] +"</div>";
+				}
+			});
+			sleep(500);
+			if (successUserId!=""){
+				profile.getUserByEmail(email, function(err, user) {
+					if(err) throw err;
+					user.user_id = successUserId;
+					user.save();
+				});
+				request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + successUserId, json: true}, function(err, res, json) {
+					if (err) {
+						throw err;
+					}
+
+					//console.log(json);
+					jsonObject = "";
+					jsonObject = json;
+					console.log(jsonObject);
+				});
+				//Set dynamic data here
+				sleep(500); // sleep for 0.5 second, this helps refreshing the data
+				html = ""
+				for (i in jsonObject){
+					if (jsonObject[i].moisture < 50)
+					{
+						html += "<div class='w3-card-4red' style='width:100%'>";
+					}
+					if (jsonObject[i].moisture >= 50 && jsonObject[i].moisture < 55){
+									html += "<div class='w3-card-4orange' style='width:100%'>";
+					}
+					if (jsonObject[i].moisture >= 55){
+									html += "<div class='w3-card-4green' style='width:100%'>";
+					}
+					html += "<div class='w3-container'><br><p>Module ID: " + jsonObject[i].module_id + "</p><hr><table><tr>";
+					if (jsonObject[i].light==1)
+					{
+						html +=
+												"<td><img src='/images/light.png' width='70%'><br><br><p>Light</p></td>";
+					}
+					else{
+						html +=
+												"<td><img src='/images/dark.png' width='70%'><br><br><p>Dark</p></td>";
+					}
+					html += 								"<td><img src='/images/hum.png' width='70%'><br><br><p>" +jsonObject[i].humidity + id +"%</p></td>" +
+													"<td><img src='/images/temp.png' width='70%'><br><br><p>" +jsonObject[i].temperature + "°C</p></td>" +
+													"<td><img src='/images/soil.png' width='70%'><br><br><p>" +jsonObject[i].moisture + "%</p></td>" +
+												"</tr></table></div></div><br><br>";
+					if (i==numberObjects -1){
+						html+= "<br><br>"
+					}
+				}
+				if (req.user.profile_picture_url!=null){
+					profilePicture += "<li role='presentation'><img src='" + req.user.profile_picture_url + "' class='w3-left w3-round-xxlarge w3-margin-right' style='height:3em'></li>"
+				}
+			}
+		}
+
+
+				if(html == ""){
+					res.render('index', {html: html, name: name, profilePicture: profilePicture});
+				}
+				else{
+					res.render('index', {html: html2, name: name, profilePicture: profilePicture});
+				}
 
 
 });
