@@ -39,7 +39,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 				console.log(jsonObject);
 			});
 			//Set dynamic data here
-			sleep(500); // sleep for 0.5 second, this helps refreshing the data
+		 // sleep for 0.5 second, this helps refreshing the data
 			html = "";
 			for (i in jsonObject){
 				if (jsonObject[i].moisture < 50)
@@ -70,7 +70,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 					html+= "<br><br>"
 				}
 			}
-			sleep(500);
+
 			if (req.user.profile_picture_url!=null){
 				profilePicture += "<li role='presentation'><img src='" + req.user.profile_picture_url + "' class='w3-left w3-round-xlarge w3-margin-right' style='height:3em'></li>"
 			}
@@ -92,7 +92,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 					html =   "<div class='w3-card-4' style='width:100%'>Naar link geweest "+ addModule[i] +"</div>";
 				}
 			});
-			sleep(500);
+
 			if (successUserId!=""){
 				profile.getUserByEmail(email, function(err, user) {
 					if(err) throw err;
@@ -110,7 +110,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 					console.log(jsonObject);
 				});
 				//Set dynamic data here
-				sleep(500); // sleep for 0.5 second, this helps refreshing the data
+				 // sleep for 0.5 second, this helps refreshing the data
 				html = ""
 				for (i in jsonObject){
 					if (jsonObject[i].moisture < 50)
