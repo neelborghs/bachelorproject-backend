@@ -74,8 +74,8 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 			}
 
 		}
-
-		if (Constid!==null){
+		sleep(1000);
+		if (Constid==null){
 			request({url: 'https://api.myjqsdfqsdfson.com/bins/yzwz5', json: true}, function(err, res, json) {
 				if(err)
 				{
