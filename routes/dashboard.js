@@ -29,12 +29,11 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	if (id == null){
 		html =   "<div class='w3-card-4' style='width:100%'><div class='w3-container'><br><p>No modules registered!</p><hr><img src='/images/plant.png' alt='Avatar' class='w3-left w3-circle w3-margin-right' style='width: 10em'><p>You don't have any modules registered on this account.<p/><p>Go to the Android application to add some plant modules to this account or login with another account.</p><p>If you have any trouble connecting your module, you can always read the instructions</p></div><div class='w3-container'><br></div></div>";
 
-	request({url: 'https://api.myjqsdfqsdfson.com/bins/yzwz5', json: true}, function(err, res, json) {
+	request({url: 'http://192.168.137.2', json: true}, function(err, res, json) {
 	if(err)
 	{
 		throw err;
 	}
-	
 	//console.log(json);
 	addModule = null;
 	addModule = json;
