@@ -7,6 +7,7 @@ var jsonObject = "";
 const profile = require('../functions/profile');
 var addModule = null;
 var successUserId = "";
+require('http');
 
 // Get Homepage
 router.get('/dashboard', ensureAuthenticated, function(req, res){
