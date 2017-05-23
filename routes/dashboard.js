@@ -4,7 +4,9 @@ var request = require('request');
 var router = express.Router();
 var sleep = require('system-sleep');
 var jsonObject = "";
-
+const profile = require('../functions/profile');
+var addModule = null;
+var successUserId = "";
 
 // Get Homepage
 router.get('/dashboard', ensureAuthenticated, function(req, res){
@@ -26,9 +28,32 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	//html += "<h1>number objects: " + numberObjects + "</h1>"; //For testing numberObjects
 	if (id == null){
 		html =   "<div class='w3-card-4' style='width:100%'><div class='w3-container'><br><p>No modules registered!</p><hr><img src='/images/plant.png' alt='Avatar' class='w3-left w3-circle w3-margin-right' style='width: 10em'><p>You don't have any modules registered on this account.<p/><p>Go to the Android application to add some plant modules to this account or login with another account.</p><p>If you have any trouble connecting your module, you can always read the instructions</p></div><div class='w3-container'><br></div></div>";
-	}
-	else{
 
+	request({url: 'https://api.myjqsdfqsdfson.com/bins/yzwz5', json: true}, function(err, res, json) {
+	if(err)
+	{
+		throw err;
+	}
+	//console.log(json);
+	addModule = null;
+	addModule = json;
+	successUserId = "";
+	for (i in addModule){
+		successUserId = addModule[i];
+		html =   "<div class='w3-card-4' style='width:100%'>Naar link geweest "+ addModule[i] +"</div>";
+	}
+});
+
+if (successUserId!=""){
+	profile.getUserByEmail(email, function(err, user) {
+		if(err) throw err;
+		user.user_id = successUserId;
+		user.save();
+	});
+
+	}
+}
+	else{
 
 	for (i in jsonObject){
 		if (jsonObject[i].moisture < 50)
