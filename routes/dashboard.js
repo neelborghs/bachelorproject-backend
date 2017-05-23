@@ -15,6 +15,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	var name = req.user.first_name;
 	var id = req.user.user_id;
 	var html = "";
+	var profilePicture = "";
 	request({url: 'https://ezgreen.herokuapp.com/api/modules/user/' + req.user.user_id, json: true}, function(err, res, json) {
 		if (err) {
 			throw err;
