@@ -34,6 +34,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 	{
 		throw err;
 	}
+	
 	//console.log(json);
 	addModule = null;
 	addModule = json;
