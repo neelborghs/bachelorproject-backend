@@ -34,7 +34,6 @@ router.post('/register', function(req, res){
 	var email = req.body.email;
 	var password = req.body.password;
 	var password2 = req.body.password2;
-
 	//console.log(name); //test to see if form gets name correctly
 
 	// Validation
