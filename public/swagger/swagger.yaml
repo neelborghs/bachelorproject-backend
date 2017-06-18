@@ -6,7 +6,7 @@ info:
   description: Move your app forward with the EZgreen API
   version: "1.0.0"
 # the domain of the service
-host: ezgreentest.herokuapp.com
+host: ezgreen.herokuapp.com
 # array of all schemes that your API supports
 schemes: [http, https]
 # will be prefixed to all paths
